@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from "react";
- 
+
 import axios from "axios";
-import { NavLink, Table } from "reactstrap";
-import { Button } from "reactstrap";
+import { Table } from "reactstrap";
 import { Badge } from "reactstrap";
+import ModalDelete from "./ModalDelete";
+import ModalEdit from "./ModalEdit";
 
 function TableData(props) {
   const [products, setProducts] = useState([]);
@@ -18,7 +19,7 @@ function TableData(props) {
     };
 
     fetchData();
-  }, []);
+  }, [products]);
   return (
     <Table bordered>
       <thead>
@@ -32,18 +33,22 @@ function TableData(props) {
       </thead>
       <tbody>
         {products.map((item) => (
-          <tr>
+          <tr key={item.id}>
             <th scope="row">{item.id}</th>
             <td>{item.name}</td>
             <td>{item.price}</td>
             <td>{item.description}</td>
             <td>
-              <Badge href="edit" color="primary">
-                <Button color="primary">Edit</Button>
-              </Badge>
-              {" "}
-              <Badge href={"https://webbanhangapi.herokuapp.com/api/product/delete/"+item.id} color="danger" formMethod="delete">
-                <Button color="danger" formMethod="delete">Delete</Button>
+              <Badge color="success">
+                <ModalEdit
+                  id={item.id}
+                  price={item.price}
+                  description={item.description}
+                  name={item.name}
+                />
+              </Badge>{" "}
+              <Badge color="danger">
+                <ModalDelete id={item.id} />
               </Badge>
             </td>
           </tr>

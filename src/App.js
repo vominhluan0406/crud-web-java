@@ -4,7 +4,6 @@ import { Switch, Route } from "react-router-dom";
 import { BrowserRouter as Router } from "react-router-dom";
 import Home from "./view/Home";
 import Add from "./view/page/Add";
-import Edit from "./view/page/Edit";
 import TableData from "./view/components/TableData";
 
 function App() {
@@ -15,9 +14,6 @@ function App() {
         <Switch>
           <Route path="/add">
             <Add />
-          </Route>
-          <Route path="/edit">
-            <Edit />
           </Route>
           <Route path="/delete"></Route>
           <Route path="/">
