@@ -7,7 +7,7 @@ function ModalDelete(props) {
   const toggle = () => setModal(!modal);
 
   const handleClickYes = () => {
-    fetch("https://webbanhangapi.herokuapp.com/api/product/delete/" + id, {
+    fetch("http://localhost:8080/api/demo/delete/" + id, {
       method: "DELETE",
       body: "Delete " + id,
       headers: { "Content-Type": "application/json" },

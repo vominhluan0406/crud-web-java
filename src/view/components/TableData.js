@@ -12,7 +12,7 @@ function TableData(props) {
   useEffect(() => {
     const fetchData = async () => {
       const result = await axios(
-        "https://webbanhangapi.herokuapp.com/api/product"
+        "http://localhost:8080/api/demo"
       );
 
       setProducts(result.data);
@@ -28,6 +28,7 @@ function TableData(props) {
           <th>Name</th>
           <th>Price</th>
           <th>Description</th>
+          <th>Image</th>
           <th>Edit/Delete</th>
         </tr>
       </thead>
@@ -38,6 +39,7 @@ function TableData(props) {
             <td>{item.name}</td>
             <td>{item.price}</td>
             <td>{item.description}</td>
+            <td><img src={item.img} alt={item.name} style={{'height':'10%'}}></img></td>
             <td>
               <Badge color="success">
                 <ModalEdit
@@ -45,6 +47,7 @@ function TableData(props) {
                   price={item.price}
                   description={item.description}
                   name={item.name}
+                  img ={item.img}
                 />
               </Badge>{" "}
               <Badge color="danger">

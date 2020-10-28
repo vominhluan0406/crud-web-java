@@ -6,14 +6,15 @@ function ModalEdit(props) {
   const [name, setName] = useState(props.name);
   const [price, setPrice] = useState(props.price);
   const [description, setDes] = useState(props.description);
+  const [img,setImg] = useState(props.img);
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
 
   const handleClickYes = (e) => {
     e.preventDefault();
-    fetch("https://webbanhangapi.herokuapp.com/api/product/" + props.id, {
+    fetch("http://localhost:8080/api/demo/edit/" + props.id, {
       method: "PUT",
-      body: JSON.stringify({ name, price, description }),
+      body: JSON.stringify({ name, price, description,img }),
       headers: { "Content-Type": "application/json" },
     });
     toggle();
@@ -49,13 +50,23 @@ function ModalEdit(props) {
             />
           </FormGroup>
           <FormGroup>
-            <Label for="exampleEmail">Price</Label>
+            <Label for="exampleEmail">Description</Label>
             <Input
               type="textarea"
               name="description"
               placeholder="Description"
               onChange={(e) => setDes(e.target.value)}
               value={description}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for="exampleEmail">Image Url</Label>
+            <Input
+              type="textarea"
+              name="img"
+              placeholder="Image Url"
+              onChange={(e) => setDes(e.target.value)}
+              value={img}
             />
           </FormGroup>
         </ModalBody>

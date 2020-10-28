@@ -5,6 +5,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import Home from "./view/Home";
 import Add from "./view/page/Add";
 import TableData from "./view/components/TableData";
+import Login from './view/page/Login';
 
 function App() {
   return (
@@ -14,6 +15,9 @@ function App() {
         <Switch>
           <Route path="/add">
             <Add />
+          </Route>
+          <Route path="/login">
+            <Login />
           </Route>
           <Route path="/delete"></Route>
           <Route path="/">

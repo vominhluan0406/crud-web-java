@@ -14,6 +14,12 @@ function Home() {
             <Button variant="success">Add</Button>
           </Nav.Link>
         </Nav>
+        <Nav.Link href="login">
+          <Button variant="success">Log in</Button>
+        </Nav.Link>
+        <Nav.Link href="api/logout">
+          <Button variant="danger">Log out</Button>
+        </Nav.Link>
       </Navbar>
     </div>
   );
