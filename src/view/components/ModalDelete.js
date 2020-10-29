@@ -1,19 +1,26 @@
 import React, { useState } from "react";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from "reactstrap";
+import axios from 'axios';
 
 function ModalDelete(props) {
   const { id } = props;
   const [modal, setModal] = useState(false);
   const toggle = () => setModal(!modal);
 
-  const handleClickYes = () => {
-    fetch("http://localhost:8080/api/demo/delete/" + id, {
-      method: "DELETE",
-      body: "Delete " + id,
-      headers: { "Content-Type": "application/json" },
-    });
+  const handleClickYes = (e) => {
+    e.preventDefault();
+    const token = localStorage.getItem('token')
+    try{
+      fetch("http://localhost:8080/api/demo/delete/"+id, {
+        method: "DELETE",
+        headers: {'Authorization':token},
+    })
     toggle();
-  };
+  
+    }catch(err){
+      console.log("Erorr",err)
+    }
+    };
 
   return (
     <div>

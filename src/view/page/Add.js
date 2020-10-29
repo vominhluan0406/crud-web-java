@@ -14,11 +14,12 @@ function Add(props) {
   const onDismiss = () => setVisible(false);
 
   const handleSubmit = async (e) => {
+    const token = localStorage.getItem('token')
     e.preventDefault();
-    await fetch("http://localhost:8080/api/demo/add", {
+    await fetch("http://localhost:8080/api/demo", {
       method: "POST",
       body: JSON.stringify({name,price,description,img}),
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json",'Authorization':token },
     });
 
     setVisible(true);

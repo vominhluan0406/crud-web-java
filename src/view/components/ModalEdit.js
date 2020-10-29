@@ -11,11 +11,12 @@ function ModalEdit(props) {
   const toggle = () => setModal(!modal);
 
   const handleClickYes = (e) => {
+    const token = localStorage.getItem('token')
     e.preventDefault();
-    fetch("http://localhost:8080/api/demo/edit/" + props.id, {
+    fetch("http://localhost:8080/api/demo/" + props.id, {
       method: "PUT",
       body: JSON.stringify({ name, price, description,img }),
-      headers: { "Content-Type": "application/json" },
+      headers: { "Content-Type": "application/json",'Authorization':token },
     });
     toggle();
     console.log(JSON.stringify({ name, price, description }));
